@@ -1,1 +1,3 @@
 venv/
+bookscraper/bookscraper/__pycache__/
+bookscraper/bookscraper/spiders/__pycache__/
