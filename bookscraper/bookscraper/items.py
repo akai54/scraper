@@ -22,7 +22,7 @@ class BookItem(scrapy.Item):
     price_incl_tax = scrapy.Field()
     tax = scrapy.Field()
     availability = scrapy.Field()
-    number_of_reviews = scrapy.Field()
+    num_reviews = scrapy.Field()
     stars = scrapy.Field()
     category = scrapy.Field()
     description = scrapy.Field()
