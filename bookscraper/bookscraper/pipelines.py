@@ -15,8 +15,16 @@ class BookscraperPipeline:
         lowercase_keys = ['category', 'product_type']
         for lowercase_key in lowercase_keys:
             value = adapter.get(lowercase_key)
-            print(lowercase_key, value)
             adapter[lowercase_key] = value.lower()
+
+        # Price --> convert to float
+        price_keys = ['price', 'price_excl_tax', 'price_incl_tax', 'tax']
+        for price_key in price_keys:
+            value = adapter.get(price_key)
+            print('***************************')
+            print(price_key, value)
+            value = value.replace('£', '')
+            adapter[price_key] = float(value)
 
         # Keep only the number of the books
         availability_string = adapter.get('availability')
