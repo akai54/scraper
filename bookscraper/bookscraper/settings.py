@@ -9,6 +9,10 @@
 
 BOT_NAME = "bookscraper"
 
+FEEDS = {
+        "scrapped_data/booksdata.json": {"format": "json"}
+        }
+
 SPIDER_MODULES = ["bookscraper.spiders"]
 NEWSPIDER_MODULE = "bookscraper.spiders"
 
