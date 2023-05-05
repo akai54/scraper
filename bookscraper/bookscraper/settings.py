@@ -16,6 +16,7 @@ FEEDS = {
 SCRAPEOPS_API_KEY = 'e98a3a34-a3d9-456d-a8ee-1b7d4244ffef'
 SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
 SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
+SCRAPEOPS_FAKE_BROWSER_HEADER_ENABLED = True
 SCRAPEOPS_NUM_RESULTS = 50
 
 SPIDER_MODULES = ["bookscraper.spiders"]
@@ -26,7 +27,7 @@ NEWSPIDER_MODULE = "bookscraper.spiders"
 #USER_AGENT = "bookscraper (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -53,9 +54,11 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    "bookscraper.middlewares.BookscraperSpiderMiddleware": 543,
-#}
+SPIDER_MIDDLEWARES = {
+    #"bookscraper.middlewares.BookscraperSpiderMiddleware": 543,
+    'bookscraper.middlewares.ScrapeOpsFakeUserAgentMiddleware': 400,
+    'bookscraper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware': 400,
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
