@@ -13,6 +13,11 @@ FEEDS = {
         "scrapped_data/booksdata.json": {"format": "json"}
         }
 
+SCRAPEOPS_API_KEY = 'e98a3a34-a3d9-456d-a8ee-1b7d4244ffef'
+SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
+SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
+SCRAPEOPS_NUM_RESULTS = 50
+
 SPIDER_MODULES = ["bookscraper.spiders"]
 NEWSPIDER_MODULE = "bookscraper.spiders"
 
