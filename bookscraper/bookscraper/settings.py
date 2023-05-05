@@ -19,6 +19,14 @@ SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
 SCRAPEOPS_FAKE_BROWSER_HEADER_ENABLED = True
 SCRAPEOPS_NUM_RESULTS = 50
 
+ROTATING_PROXY_LIST = [
+        '193.34.161.129:44436',
+        '104.194.225.108:41354',
+        '89.252.12.123:5678',
+        '47.74.18.0:38080',
+        '185.66.56.3:42647'
+        ]
+
 SPIDER_MODULES = ["bookscraper.spiders"]
 NEWSPIDER_MODULE = "bookscraper.spiders"
 
@@ -58,6 +66,8 @@ SPIDER_MIDDLEWARES = {
     #"bookscraper.middlewares.BookscraperSpiderMiddleware": 543,
     'bookscraper.middlewares.ScrapeOpsFakeUserAgentMiddleware': 400,
     'bookscraper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware': 400,
+    'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
+    'rotating_proxies.middlewares.BanDetectionMiddleware': 620,
 }
 
 # Enable or disable downloader middlewares
