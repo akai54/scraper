@@ -26,14 +26,10 @@ class BookscraperPipeline:
             value = value.replace('£', '')
             adapter[price_key] = float(value)
 
-        # Keep only the number of the books
+        # Keep only the number of the available books
         availability_string = adapter.get('availability')
-        split_string_array = availability_string.split('(')
-        if len(split_string_array) < 2:
-            adapter['availability'] = 0
-        else:
-            availability_array = split_string_array[1].split(' ')
-            adapter['availability'] = int(availability_array[0])
+        availability_numeric = ''.join(c for c in availability_string if c.isnumeric())
+        adapter['availability'] = int(availability_numeric)
 
         # Convert the number of reviews to an int
         num_reviews_string = adapter.get('num_reviews')
