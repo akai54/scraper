@@ -1,5 +1,7 @@
 from itemadapter import ItemAdapter
 
+STARS_MAPPING = {'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5}
+
 class BookscraperPipeline:
     def process_item(self, item, spider):
         adapter = ItemAdapter(item)
@@ -41,17 +43,6 @@ class BookscraperPipeline:
         stars_string = adapter.get('stars')
         split_stars_array = stars_string.split(' ')
         stars_text_value = split_stars_array[1].lower()
-        if stars_text_value == "zero":
-            adapter['stars'] = 0
-        elif stars_text_value == "one":
-            adapter['stars'] = 1
-        elif stars_text_value == "two":
-            adapter['stars'] = 2
-        elif stars_text_value == "three":
-            adapter['stars'] = 3
-        elif stars_text_value == "four":
-            adapter['stars'] = 4
-        elif stars_text_value == "five":
-            adapter['stars'] = 5
+        adapter['stars'] = STARS_MAPPING.get(stars_text_value, 0)
 
         return item
