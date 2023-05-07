@@ -6,25 +6,25 @@ class BookspiderSpider(scrapy.Spider):
     allowed_domains = ["books.toscrape.com"]
     start_urls = ["http://books.toscrape.com/"]
 
+    def get_formatted_url(self, path):
+        if 'catalogue/' in path:
+            return 'http://books.toscrape.com/' + path
+        else:
+            return 'http://books.toscrape.com/catalogue/' + path
+
     def parse(self, response):
         books = response.css("article.product_pod")
 
         for book in books:
             next_book = book.css('h3 a ::attr(href)').get()
             if next_book is not None:
-                if 'catalogue/' in next_book:
-                    next_book_url = 'http://books.toscrape.com/' + next_book
-                else:
-                    next_book_url = 'http://books.toscrape.com/catalogue/' + next_book
-                yield response.follow(next_book_url, callback = self.parse_book_page)
+                next_book_url = self.get_formatted_url(next_book)
+                yield response.follow(next_book_url, callback=self.parse_book_page)
 
         next_page = response.css('li.next a::attr(href)').get()
         if next_page is not None:
-            if 'catalogue/' in next_page:
-                next_page_url = 'http://books.toscrape.com/' + next_page
-            else:
-                next_page_url = 'http://books.toscrape.com/catalogue/' + next_page
-            yield response.follow(next_page_url, callback = self.parse)
+            next_page_url = self.get_formatted_url(next_page)
+            yield response.follow(next_page_url, callback=self.parse)
 
     def parse_book_page(self, response):
         table_rows = response.css('table tr')
