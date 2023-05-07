@@ -21,8 +21,6 @@ class BookscraperPipeline:
         price_keys = ['price', 'price_excl_tax', 'price_incl_tax', 'tax']
         for price_key in price_keys:
             value = adapter.get(price_key)
-            print('***************************')
-            print(price_key, value)
             value = value.replace('£', '')
             adapter[price_key] = float(value)
 
