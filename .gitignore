@@ -3,3 +3,7 @@ bookscraper/bookscraper/__pycache__/
 bookscraper/bookscraper/spiders/__pycache__/
 bookscraper/bookscraper/scrapped_data/
 bookscraper/bookscraper/settings.py
+jobscraper/jobscraper/__pycache__/
+jobscraper/jobscraper/spiders/__pycache__/
+jobscraper/jobscraper/scrapped_data/
+jobscraper/jobscraper/settings.py
