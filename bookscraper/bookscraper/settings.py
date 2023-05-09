@@ -10,7 +10,9 @@
 BOT_NAME = "bookscraper"
 
 FEEDS = {
-        "scrapped_data/booksdata.json": {"format": "json"}
+        "scrapped_data/booksdata.json": {"format": "json"},
+        "scrapped_data/booksdata.xml": {"format": "xml"},
+        "scrapped_data/booksdata.csv": {"format": "csv"},
         }
 
 SCRAPEOPS_API_KEY = 'e98a3a34-a3d9-456d-a8ee-1b7d4244ffef'
